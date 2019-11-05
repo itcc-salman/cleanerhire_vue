@@ -1,36 +1,26 @@
 <template>
-  <card :title="$t('your_info')">
-    <form @submit.prevent="update" @keydown="form.onKeydown($event)">
-      <alert-success :form="form" :message="$t('info_updated')" />
-
-      <!-- Name -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
-        <div class="col-md-7">
-          <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" class="form-control" type="text" name="name">
-          <has-error :form="form" field="name" />
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-        <div class="col-md-7">
-          <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-          <has-error :form="form" field="email" />
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="form-group row">
-        <div class="col-md-9 ml-md-auto">
-          <v-button :loading="form.busy" type="success">
-            {{ $t('update') }}
-          </v-button>
-        </div>
-      </div>
-    </form>
-  </card>
+    <panel :title="$t('your_info')">
+        <form @submit.prevent="update" @keydown="form.onKeydown($event)">
+            <alert-success :form="form" :message="$t('info_updated')" />
+            <div class="form-group">
+                <label for="name">{{ $t('name') }}</label>
+                <input v-model="form.name" :class="{ 'error': form.errors.has('name') }" class="form-control" id="name" type="text" name="name">
+                <has-error :form="form" field="name" />
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">{{ $t('email') }}</label>
+                <input v-model="form.email" :class="{ 'error': form.errors.has('email') }" class="form-control" id="email" type="email" name="email">
+                <has-error :form="form" class="error" field="email" />
+            </div>
+            <!-- Submit Button -->
+            <div class="form-group">
+                <div class="pull-right">
+                    <v-button :loading="form.busy" type="success">{{ $t('update') }}</v-button>
+                </div>
+            </div>
+        </form>
+    </panel>
 </template>
 
 <script>

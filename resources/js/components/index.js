@@ -3,7 +3,9 @@ import Card from './Card'
 import Child from './Child'
 import Button from './Button'
 import Checkbox from './Checkbox'
-import { HasError, AlertError, AlertSuccess } from 'vform'
+import HasError from './Haserror'
+import Panel from './Panel'
+import { AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globaly.
 [
@@ -12,6 +14,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   Button,
   Checkbox,
   HasError,
+  Panel,
   AlertError,
   AlertSuccess
 ].forEach(Component => {

@@ -24,9 +24,9 @@
             </li>-->
 
             <li>
-                <a href="#"><i class="fa fa-users"></i><span>Cleaners </span><i class="fa fa-angle-right pull-right"></i></a>
+                <a href="#" v-on:click="uiNav"><i class="fa fa-users"></i><span>Cleaners </span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="nav nav-sub nav-sub--open">
-                    <li ><a href=""><span>Registered Cleaners</span></a></li>
+                    <li ><a href="#" v-on:click="uiNav"><span>Registered Cleaners</span></a></li>
                     <li><a ><span>Application Requests</span></a></li>
                     <li><a ><span>Timesheets</span></a></li>
                     <li><a><span>Availability</span></a></li>
@@ -257,7 +257,26 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Sidebar'
+  name: 'Sidebar',
+  computed: mapGetters({
+    user: 'auth/user'
+  }),
+  methods: {
+    uiNav: function(e) {
+        // Open submenu
+        var $this = $(e.target), $active;
+        $this.is('a') || ($this = $this.closest('a'));
+
+        $active = $this.parent().siblings( ".active" );
+        $active && $active.toggleClass('active').find('> ul:visible').stop().slideUp(200);
+
+        ($this.parent().hasClass('active') && $this.next().stop().slideUp(200)) || $this.next().stop().slideDown(200);
+        $this.parent().toggleClass('active');
+
+        $this.next().is('ul') && e.preventDefault();
+    }
+  }
 }
 </script>

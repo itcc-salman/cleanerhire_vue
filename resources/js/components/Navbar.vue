@@ -16,7 +16,7 @@
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-search"></i></button>
             <div class="dropdown-menu">
                 <form >
-                    <input class="form-control" placeholder="Search here..." type="text">
+                    <input class="form-control" placeholder="Search..." type="text">
                 </form>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <!--toggle buttons start-->
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="toggle-btn" data-toggle="ui-nav" href="">
+                    <a class="toggle-btn" data-toggle="ui-nav" @click="toggleuiDataNav" href="#">
                         <i class="fa fa-bars"></i>
                     </a>
                 </li>
@@ -38,7 +38,7 @@
                 <button type="submit" name="search" class="btn srch-btn">
                     <i class="fa fa-search"></i>
                 </button>
-                <input type="text" class="form-control" name="keyword" placeholder="Search here...">
+                <input type="text" class="form-control" name="keyword" placeholder="Search ...">
             </form>
             <!--search end-->
 
@@ -232,17 +232,10 @@
                         <span class="caret hidden-sm hidden-xs"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="#"><i class="fa fa-cogs"></i>  Settings</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                        <li><a href="#"><i class="fa fa-commenting-o"></i>  Feedback</a></li>
-                        <li><a href="#"><i class="fa fa-life-ring"></i>  Help</a></li>
+                        <li><router-link :to="{ name: 'settings.profile' }"><i class="fa fa-cogs"></i>  Settings</router-link></li>
                         <li class="divider"></li>
                         <li><a href="#" @click.prevent="logout"><i class="fa fa-sign-out"></i> {{ $t('logout') }}</a></li>
                     </ul>
-                </li>
-
-                <li>
-                    <a data-toggle="ui-aside-right" href=""><i class="glyphicon glyphicon-option-vertical"></i></a>
                 </li>
             </ul>
             <!--notification end-->
@@ -281,7 +274,12 @@ export default {
 
       // Redirect to login.
       this.$router.push({ name: 'login' })
+    },
+    toggleuiDataNav: function(e) {
+        e.preventDefault();
+        $('#ui').toggleClass('ui-aside-compact');
     }
+
   }
 }
 </script>

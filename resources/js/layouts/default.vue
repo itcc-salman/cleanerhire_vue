@@ -1,9 +1,11 @@
 <template>
-  <div class="main-layout">
+  <div class="main-layout ui" id="ui">
     <navbar v-if="['login', 'register', 'password.request'].indexOf($route.name) < 0" />
 
-    <div class="container mt-4">
-      <child />
+    <div class="ui-content" id="content">
+        <div class="ui-content-body">
+            <child />
+        </div>
     </div>
   </div>
 </template>
