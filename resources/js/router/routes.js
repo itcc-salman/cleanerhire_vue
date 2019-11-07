@@ -20,6 +20,14 @@ export default [
       { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ] },
+  {
+    path: '/cleaners',
+    component: page('cleaners/index.vue'),
+    children: [
+      { path: '', redirect: { name: 'cleaners.index' } },
+      { path: 'index', name: 'cleaners.index', component: page('cleaners/index.vue') },
+      { path: 'register', name: 'cleaners.register', component: page('cleaners/register.vue') }
+    ] },
 
   { path: '*', component: page('errors/404.vue') }
 ]

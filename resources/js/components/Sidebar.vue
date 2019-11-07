@@ -6,34 +6,19 @@
                 <h5 class="nav-title text-uppercase light-txt">Navigation</h5>
             </li>
             <li class="active">
-                <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
+                <router-link :to="{ name: user ? 'home' : 'welcome' }">
                     <i class="fa fa-home"></i><span>Dashboard</span>
                 </router-link>
-                <!--<ul class="nav nav-sub nav-sub--open">
-                    <li class="nav-sub-header"><a href=""><span>Dashboard</span></a></li>
-                    <li class="active"><a href="index.html"><span>Dashboard 1</span></a></li>
-                    <li><a href="dashboard-horizontal-nav.html"><span>Dashboard 2 <small class="label label-danger">TopNav</small></span></a></li>
-                    <li><a href="dashboard-compact.html"><span>Dashboard 3 <small class="label label-success">Sm Nav</small></span></a></li>
-                    <li><a href="dashboard-mega-dropdown.html"><span>Dashboard 4 <small class="label label-primary">eCom..</small></span></a></li>
-                    <li><a href="dashboard-lightsidebar.html"><span>Dashboard 5 <small class="label label-info">Light</small></span></a></li>
-                </ul>-->
             </li>
 
-           <!-- <li class="nav-head">
-                <h5 class="nav-title text-uppercase light-txt">Layouts</h5>
-            </li>-->
-
             <li>
-                <a href="#" v-on:click="uiNav"><i class="fa fa-users"></i><span>Cleaners </span><i class="fa fa-angle-right pull-right"></i></a>
+                <a href="#" @click="uiNav"><i class="fa fa-users"></i><span>Cleaners </span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="nav nav-sub nav-sub--open">
-                    <li ><a href="#" v-on:click="uiNav"><span>Registered Cleaners</span></a></li>
-                    <li><a ><span>Application Requests</span></a></li>
-                    <li><a ><span>Timesheets</span></a></li>
+                    <!-- <li><a href="#" v-on:click="uiNav"><span>Registered Cleaners</span></a></li> -->
+                    <li><router-link :to="{ name: 'cleaners.index' }"><span>Registered Cleaners</span></router-link></li>
+                    <li><a><span>Application Requests</span></a></li>
+                    <li><a><span>Timesheets</span></a></li>
                     <li><a><span>Availability</span></a></li>
-                    <!--<li><a href="layout-language-bar.html"><span>Header Language Bar</span></a></li>
-                    <li><a href="layout-boxed.html"><span>Boxed Page</span></a></li>
-                    <li><a href="layout-full-width.html"><span>Special Layout</span></a></li>
-                    <li><a href="layout-footer-dark.html"><span>Footer Dark</span></a></li>-->
                 </ul>
             </li>
 
