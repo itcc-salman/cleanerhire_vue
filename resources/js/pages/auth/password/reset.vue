@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
-      <card :title="$t('reset_password')">
+      <panel :title="$t('reset_password')">
         <form @submit.prevent="reset" @keydown="form.onKeydown($event)">
           <alert-success :form="form" :message="status" />
 
@@ -9,7 +9,7 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email" readonly>
+              <input v-model="form.email" :class="{ 'error': form.errors.has('email') }" class="form-control" type="email" name="email" readonly>
               <has-error :form="form" field="email" />
             </div>
           </div>
@@ -41,7 +41,7 @@
             </div>
           </div>
         </form>
-      </card>
+      </panel>
     </div>
   </div>
 </template>

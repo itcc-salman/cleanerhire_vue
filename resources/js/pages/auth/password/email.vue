@@ -1,31 +1,29 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <card :title="$t('reset_password')">
-        <form @submit.prevent="send" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status" />
+    <div class="row">
+        <div class="col-lg-8 m-auto">
+            <panel :title="$t('reset_password')">
+                <form @submit.prevent="send" @keydown="form.onKeydown($event)">
+                    <alert-success :form="form" :message="status" />
 
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-              <has-error :form="form" field="email" />
-            </div>
-          </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">{{ $t('email') }}</label>
+                        <input v-model="form.email" :class="{ 'error': form.errors.has('email') }" class="form-control" type="email" id="email" name="email">
+                        <has-error :form="form" field="email" />
+                    </div>
 
-          <!-- Submit Button -->
-          <div class="form-group row">
-            <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
-                {{ $t('send_password_reset_link') }}
-              </v-button>
-            </div>
-          </div>
-        </form>
-      </card>
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <div class="pull-right">
+                            <v-button :loading="form.busy">
+                                {{ $t('send_password_reset_link') }}
+                            </v-button>
+                        </div>
+                    </div>
+                </form>
+            </panel>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
