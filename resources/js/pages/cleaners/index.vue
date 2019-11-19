@@ -1,13 +1,10 @@
 <template>
     <div class="row">
         <div class="col-md-3">
-            <panel :title="$t('settings')" class="settings-card">
+            <panel class="settings-card">
                 <ul class="nav">
-                    <li v-for="tab in tabs" :key="tab.route" class="nav-item">
-                        <router-link :to="{ name: tab.route }" class="nav-link" active-class="active">
-                            <fa :icon="tab.icon" fixed-width />
-                            {{ tab.name }}
-                        </router-link>
+                    <li v-for="cleaner in cleaners" :key="cleaner.id" class="nav-item">
+                        {{ cleaner.first_name }}
                     </li>
                 </ul>
             </panel>
@@ -22,24 +19,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   middleware: 'auth',
-
-  computed: {
-    tabs () {
-      return [
-        {
-          icon: 'user',
-          name: this.$t('profile'),
-          route: 'settings.profile'
-        },
-        {
-          icon: 'lock',
-          name: this.$t('password'),
-          route: 'settings.password'
-        }
-      ]
+  data () {
+    return {
+      cleaners: null
     }
+  },
+  created () {
+    console.log('loaded');
+    axios
+      .get('/api/cleaners')
+      .then(response => (this.cleaners = response.data.cleaners))
   }
 }
 </script>
