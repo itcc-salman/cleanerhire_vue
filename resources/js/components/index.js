@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Card from './Card'
 import Child from './Child'
+import FrontHeader from './FrontHeader'
+import FrontFooter from './FrontFooter'
 import Button from './Button'
 import Checkbox from './Checkbox'
 import HasError from './Haserror'
@@ -11,6 +13,8 @@ import { AlertError, AlertSuccess } from 'vform'
 [
   Card,
   Child,
+  FrontHeader,
+  FrontFooter,
   Button,
   Checkbox,
   HasError,

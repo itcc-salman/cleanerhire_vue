@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('admin/{path?}', function () {
+    return view('admin.index');
+})->where('path', '(.*)');
+
 Route::get('{path}', function () {
     return view('index');
 })->where('path', '(.*)');
+
