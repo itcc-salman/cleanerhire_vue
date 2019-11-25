@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="top-right links">
+    <!-- <div class="top-right links">
       <template v-if="authenticated">
         <router-link :to="{ name: 'home' }">
           {{ $t('home') }}
@@ -14,17 +14,8 @@
           {{ $t('register') }}
         </router-link>
       </template>
-    </div>
-
-    <div class="text-center">
-      <div class="title mb-4">
-        {{ title }}
-      </div>
-
-      <div class="links">
-        <a href="https://github.com/cretueusebiu/laravel-vue-spa">github.com/cretueusebiu/laravel-vue-spa</a>
-      </div>
-    </div>
+    </div> -->
+    <router-view />
   </div>
 </template>
 
@@ -32,7 +23,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  layout: 'basic',
+  layout: 'default',
 
   metaInfo () {
     return { title: this.$t('home') }
