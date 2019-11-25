@@ -1,19 +1,13 @@
 <template>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <panel class="settings-card">
                 <ul class="nav">
-                    <li v-for="cleaner in cleaners" :key="cleaner.id" class="nav-item">
-                        {{ cleaner.first_name }}
+                    <li v-for="cleaner in cleaners" v-bind:key="cleaner.id" class="nav-item">
+                        {{ cleaner }}
                     </li>
                 </ul>
             </panel>
-        </div>
-
-        <div class="col-md-9">
-            <transition name="fade" mode="out-in">
-                <router-view />
-            </transition>
         </div>
     </div>
 </template>
@@ -28,7 +22,7 @@ export default {
       cleaners: null
     }
   },
-  created () {
+  mounted () {
     console.log('loaded');
     axios
       .get('/api/cleaners')
